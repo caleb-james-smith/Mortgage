@@ -13,8 +13,8 @@ class Mortgage:
         self.num_months             = 12 * num_years
         self.monthly_tax            = self.purchase_price * annual_prop_tax_rate  / 12 
         self.monthly_insurance      = self.purchase_price * annual_insurance_rate / 12  
+        self.total_cost             = self.down_payment
         self.total_mortgage_cost    = 0
-        self.total_cost             = 0
         self.setLoan(self.purchase_price - self.down_payment)
         self.setAmountOwed(self.loan)
         self.setMonthlyMortgagePayment(self.calcMonthlyMortgagePayment())
@@ -57,14 +57,14 @@ class Mortgage:
         equity = self.purchase_price - self.amount_owed
         return equity
 
-    def addToMortgageCost(self, nMonths):
-        self.total_mortgage_cost += nMonths * self.monthly_mortgage_payment
+    def addToMortgageCost(self, amount):
+        self.total_mortgage_cost += amount
 
     def getMortgageCost(self):
         return self.total_mortgage_cost
 
-    def addToTotalCost(self, nMonths):
-        self.total_cost += nMonths * self.monthly_payment 
+    def addToTotalCost(self, amount):
+        self.total_cost += amount
 
     def getTotalCost(self):
         return self.total_cost
@@ -82,18 +82,24 @@ class Mortgage:
 
 class Rent:
     def __init__(self, monthly_rent):
-        self.monthly_rent = monthly_rent
         self.total_cost   = 0
+        self.setMonthlyRent(monthly_rent)
         self.setYearlyRent(12 * self.monthly_rent)
 
+    def setMonthlyRent(self, monthly_rent):
+        self.monthly_rent = monthly_rent
+
+    def getMonthlyRent(self):
+        return self.monthly_rent
+    
     def setYearlyRent(self, yearly_rent):
         self.yearly_rent = yearly_rent
 
     def getYearlyRent(self):
         return self.yearly_rent
 
-    def addToCost(self, nMonths):
-        self.total_cost += nMonths * self.monthly_rent
+    def addToCost(self, amount):
+        self.total_cost += amount
 
     def getTotalCost(self):
         return self.total_cost
@@ -112,13 +118,13 @@ def main():
         )
     m.printInfo()
     for i in range(1, nYears + 1):
-        r.addToCost(12)
+        r.addToCost(r.getYearlyRent())
         print("year {0}, total rent cost: {1:.2f}".format(i, r.getTotalCost()))
     for i in range(1, nYears + 1):
         for j in range(1, 13):
             m.setAmountOwed(m.calcAmountOwedAfterMonth())
-            m.addToMortgageCost(1)
-            m.addToTotalCost(1)
+            m.addToMortgageCost(m.getMonthlyMortgagePayment())
+            m.addToTotalCost(m.getMonthlyPayment())
         print("year {0}, amount owed: {1:.2f}, equity: {2:.2f}, total mortgage cost: {3:.2f}, total cost: {4:.2f}".format(i, m.getAmountOwed(), m.calcEquity(), m.getMortgageCost(), m.getTotalCost()))
 
 if __name__ == "__main__":
