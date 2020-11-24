@@ -71,11 +71,11 @@ class Mortgage:
 
     def printInfo(self):
         print(50*"-")
-        print("Purchase price: {0}".format(self.purchase_price))
-        print("Down payment: {0}".format(self.down_payment))
-        print("Loan: {0}".format(self.loan))
-        print("Number of years: {0}".format(self.num_years))
-        print("Annual interest rate: {0}".format(self.annual_interest_rate))
+        print("Purchase price: {0:.2f}".format(self.purchase_price))
+        print("Down payment: {0:.2f}".format(self.down_payment))
+        print("Loan: {0:.2f}".format(self.loan))
+        print("Number of years: {0:.2f}".format(self.num_years))
+        print("Annual interest rate: {0:.2f}".format(self.annual_interest_rate))
         print("Mortgage monthly payment: {0:.2f}".format(self.monthly_mortgage_payment))
         print("Total monthly payment: {0:.2f}".format(self.monthly_payment))
         print(50*"-")
