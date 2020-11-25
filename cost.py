@@ -63,6 +63,14 @@ class Mortgage:
         equity = self.purchase_price - self.amount_owed
         return equity
 
+    def calcPaidForPrincipal(self):
+        amount = self.calcEquity() - self.getDownPayment()
+        return amount
+
+    def calcPaidForInterest(self):
+        amount = self.getMortgageCost() - self.calcPaidForPrincipal()
+        return amount
+
     def addToMortgageCost(self, amount):
         self.total_mortgage_cost += amount
 
@@ -131,12 +139,8 @@ def main():
             m.setAmountOwed(m.calcAmountOwedAfterMonth())
             m.addToMortgageCost(m.getMonthlyMortgagePayment())
             m.addToTotalCost(m.getMonthlyPayment())
-        down_payment = m.getDownPayment()
-        equity       = m.calcEquity()
-        amount_paid_for_principal = equity - down_payment
-        amount_paid_for_interest  = m.getMortgageCost() - amount_paid_for_principal
-        print("year {0}, owed: {1:.2f}, equity: {2:.2f}, paid principal: {3:.2f}, paid interest: {4:.2f}, mortgage cost: {5:.2f}".format(i, m.getAmountOwed(), equity, amount_paid_for_principal, amount_paid_for_interest, m.getMortgageCost()))
-        #print("year {0}, owed: {1:.2f}, equity: {2:.2f}, total cost: {3:.2f}".format(i, m.getAmountOwed(), equity, m.getTotalCost()))
+        print("year {0}, owed: {1:.2f}, equity: {2:.2f}, paid principal: {3:.2f}, paid interest: {4:.2f}, mortgage cost: {5:.2f}".format(i, m.getAmountOwed(), m.calcEquity(), m.calcPaidForPrincipal(), m.calcPaidForInterest(), m.getMortgageCost()))
+        #print("year {0}, owed: {1:.2f}, equity: {2:.2f}, total cost: {3:.2f}".format(i, m.getAmountOwed(), m.calcEquity(), m.getTotalCost()))
 
 if __name__ == "__main__":
     main()
