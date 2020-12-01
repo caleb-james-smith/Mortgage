@@ -88,8 +88,8 @@ class Mortgage:
         print("Purchase price: {0:.2f}".format(self.purchase_price))
         print("Down payment: {0:.2f}".format(self.down_payment))
         print("Loan: {0:.2f}".format(self.loan))
-        print("Number of years: {0:.2f}".format(self.num_years))
-        print("Annual interest rate: {0:.2f}".format(self.annual_interest_rate))
+        print("Number of years: {0}".format(self.num_years))
+        print("Annual interest rate: {0}".format(self.annual_interest_rate))
         print("Mortgage monthly payment: {0:.2f}".format(self.monthly_mortgage_payment))
         print("Total monthly payment: {0:.2f}".format(self.monthly_payment))
         print(50*"-")
@@ -123,13 +123,13 @@ def main():
     nYears = 15
     r = Rent(monthly_rent=1000.00)
     m = Mortgage(
-            num_years=nYears,
-            purchase_price=150000.00,
-            down_payment=15000.00,
-            annual_interest_rate=0.037,
-            annual_prop_tax_rate=0.007,
-            annual_insurance_rate=0.0035
-        )
+                    num_years=nYears,
+                    purchase_price=150000.00,
+                    down_payment=15000.00,
+                    annual_interest_rate=0.037,
+                    annual_prop_tax_rate=0.007,
+                    annual_insurance_rate=0.0035
+                )
     m.printInfo()
     for i in range(1, nYears + 1):
         r.addToCost(r.getYearlyRent())
@@ -139,8 +139,8 @@ def main():
             m.setAmountOwed(m.calcAmountOwedAfterMonth())
             m.addToMortgageCost(m.getMonthlyMortgagePayment())
             m.addToTotalCost(m.getMonthlyPayment())
-        print("year {0}, owed: {1:.2f}, equity: {2:.2f}, paid principal: {3:.2f}, paid interest: {4:.2f}, mortgage cost: {5:.2f}".format(i, m.getAmountOwed(), m.calcEquity(), m.calcPaidForPrincipal(), m.calcPaidForInterest(), m.getMortgageCost()))
-        #print("year {0}, owed: {1:.2f}, equity: {2:.2f}, total cost: {3:.2f}".format(i, m.getAmountOwed(), m.calcEquity(), m.getTotalCost()))
+        #print("year {0}, owed: {1:.2f}, equity: {2:.2f}, paid principal: {3:.2f}, paid interest: {4:.2f}, mortgage cost: {5:.2f}".format(i, m.getAmountOwed(), m.calcEquity(), m.calcPaidForPrincipal(), m.calcPaidForInterest(), m.getMortgageCost()))
+        print("year {0}, owed: {1:.2f}, equity: {2:.2f}, total cost: {3:.2f}".format(i, m.getAmountOwed(), m.calcEquity(), m.getTotalCost()))
 
 if __name__ == "__main__":
     main()
