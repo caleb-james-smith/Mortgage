@@ -4,11 +4,12 @@
 # mortgage amortization example: https://www.rocketmortgage.com/learn/mortgage-amortization
 
 class Mortgage:
-    def __init__(self, num_years, purchase_price, down_payment, annual_interest_rate, annual_prop_tax_rate, annual_insurance_rate):
+    def __init__(self, num_years, purchase_price, down_payment, annual_interest_rate, annual_prop_tax_rate, annual_insurance_rate, monthly_hoa):
         self.purchase_price         = purchase_price
         self.down_payment           = down_payment
         self.annual_interest_rate   = annual_interest_rate
         self.monthly_interest_rate  = self.annual_interest_rate / 12
+        self.monthly_hoa            = monthly_hoa
         self.num_years              = num_years
         self.num_months             = 12 * num_years
         self.monthly_tax            = self.purchase_price * annual_prop_tax_rate  / 12 
@@ -18,7 +19,7 @@ class Mortgage:
         self.setLoan(self.purchase_price - self.down_payment)
         self.setAmountOwed(self.loan)
         self.setMonthlyMortgagePayment(self.calcMonthlyMortgagePayment())
-        self.setMonthlyPayment(self.monthly_mortgage_payment + self.monthly_tax + self.monthly_insurance)
+        self.setMonthlyPayment(self.monthly_mortgage_payment + self.monthly_tax + self.monthly_insurance + self.monthly_hoa)
 
     def getPurchasePrice(self):
         return self.purchase_price
@@ -120,15 +121,16 @@ class Rent:
 
 
 def main():
-    nYears = 15
+    nYears = 30
     r = Rent(monthly_rent=1000.00)
     m = Mortgage(
                     num_years=nYears,
-                    purchase_price=150000.00,
-                    down_payment=15000.00,
-                    annual_interest_rate=0.037,
-                    annual_prop_tax_rate=0.007,
-                    annual_insurance_rate=0.0035
+                    purchase_price=100000.00,
+                    down_payment=20000.00,
+                    annual_interest_rate=0.04126,
+                    annual_prop_tax_rate=0.0133,
+                    annual_insurance_rate=0.0042,
+                    monthly_hoa=114
                 )
     m.printInfo()
     for i in range(1, nYears + 1):
