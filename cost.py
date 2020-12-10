@@ -121,16 +121,16 @@ class Rent:
 
 
 def main():
-    nYears = 30
+    nYears = 15
     r = Rent(monthly_rent=1000.00)
     m = Mortgage(
                     num_years=nYears,
                     purchase_price=100000.00,
-                    down_payment=20000.00,
-                    annual_interest_rate=0.04126,
+                    down_payment=30000.00,
+                    annual_interest_rate=0.02440,
                     annual_prop_tax_rate=0.0133,
                     annual_insurance_rate=0.0042,
-                    monthly_hoa=114
+                    monthly_hoa=114.00
                 )
     m.printInfo()
     for i in range(1, nYears + 1):
