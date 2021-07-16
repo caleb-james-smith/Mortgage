@@ -104,9 +104,10 @@ class Mortgage:
     def printInfo(self):
         print(50*"-")
         print("Purchase price: {0:.2f}".format(self.purchase_price))
-        print("Down payment: {0:.2f}".format(self.down_payment))
         print("Closing costs: {0:.2f}".format(self.closing_costs))
+        print("Down payment: {0:.2f}".format(self.down_payment))
         print("Loan: {0:.2f}".format(self.loan))
+        print("Selling price: {0:.2f}".format(self.selling_price))
         print("Number of years: {0}".format(self.num_years))
         print("Annual interest rate: {0}".format(self.annual_interest_rate))
         print("Mortgage monthly payment: {0:.2f}".format(self.monthly_mortgage_payment))
@@ -152,8 +153,8 @@ def main():
                     annual_interest_rate=0.02440,
                     annual_prop_tax_rate=0.0133,
                     annual_insurance_rate=0.0042,
-                    monthly_hoa=114.00,
-                    selling_price=150000.00,
+                    monthly_hoa=0.00,
+                    selling_price=160000.00,
                     selling_realtor_fee_rate=0.06
                 )
     m.printInfo()
