@@ -143,16 +143,19 @@ class Rent:
 
 
 def main():
-    nYears = 15
+    #nYears = 15
+    nYears = 30
     r = Rent(monthly_rent=1000.00)
     m = Mortgage(
                     num_years=nYears,
-                    purchase_price=180000.00,
-                    down_payment=20000.00,
+                    purchase_price=200000.00,
+                    down_payment=30000.00,
                     closing_costs=5000.0,
-                    annual_interest_rate=0.03000,
+                    annual_interest_rate=0.02875,
+                    #annual_interest_rate=0.03000,
                     annual_prop_tax_rate=0.0133,
                     annual_insurance_rate=0.0042,
+                    #monthly_hoa=0.00,
                     monthly_hoa=133.33,
                     selling_price=200000.00,
                     selling_realtor_fee_rate=0.06
