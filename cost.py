@@ -154,10 +154,10 @@ def main():
                  annual_interest_rate=0.02875,
                  #annual_interest_rate=0.03000,
                  annual_prop_tax_rate=0.0133,
-                 annual_insurance_rate=0.0042,
+                 annual_insurance_rate=0.0082,
                  monthly_hoa=0.00,
                  #monthly_hoa=133.33,
-                 selling_price=200000.00,
+                 selling_price=195000.00,
                  selling_realtor_fee_rate=0.06
     )
     m.printInfo()
@@ -173,9 +173,9 @@ def main():
             m.addToMortgageCost(m.getMonthlyMortgagePayment())
             m.addToTotalCost(m.getMonthlyPayment())
             m.setCostAfterSale(m.getTotalCost() - m.calcAmountEarnedInSale())
-        print("year {0}, owed: {1:.2f}, equity: {2:.2f}, paid principal: {3:.2f}, paid interest: {4:.2f}, mortgage cost: {5:.2f}".format(i, m.getAmountOwed(), m.calcEquity(), m.calcPaidForPrincipal(), m.calcPaidForInterest(), m.getMortgageCost()))
+        #print("year {0}, owed: {1:.2f}, equity: {2:.2f}, paid principal: {3:.2f}, paid interest: {4:.2f}, mortgage cost: {5:.2f}".format(i, m.getAmountOwed(), m.calcEquity(), m.calcPaidForPrincipal(), m.calcPaidForInterest(), m.getMortgageCost()))
         #print("year {0}, owed: {1:.2f}, equity: {2:.2f}, buy cost before sale: {3:.2f}, buy cost after sale: {4:.2f}".format(i, m.getAmountOwed(), m.calcEquity(), m.getTotalCost(), m.getTotalCost() - m.calcAmountEarnedInSale()))
-        #print("year {0}, rent cost: {1:.2f}, buy cost after sale: {2:.2f}, cost diff (rent - buy): {3:.2f}".format(i, r.getTotalCost(), m.getCostAfterSale(), r.getTotalCost() - m.getCostAfterSale()))
+        print("year {0}, rent cost: {1:.2f}, buy cost after sale: {2:.2f}, cost diff (rent - buy): {3:.2f}".format(i, r.getTotalCost(), m.getCostAfterSale(), r.getTotalCost() - m.getCostAfterSale()))
 
 if __name__ == "__main__":
     main()
