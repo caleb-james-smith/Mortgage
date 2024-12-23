@@ -111,6 +111,8 @@ class Mortgage:
         print("Number of years: {0}".format(self.num_years))
         print("Annual interest rate: {0}".format(self.annual_interest_rate))
         print("Mortgage monthly payment: {0:.2f}".format(self.monthly_mortgage_payment))
+        print("Monthly insurance: {0:.2f}".format(self.monthly_insurance))
+        print("Monthly tax: {0:.2f}".format(self.monthly_tax))
         print("Total monthly payment: {0:.2f}".format(self.monthly_payment))
         print(50*"-")
 
@@ -153,8 +155,8 @@ def main():
                  closing_costs=5241.0,
                  annual_interest_rate=0.02875,
                  #annual_interest_rate=0.03000,
-                 annual_prop_tax_rate=0.0133,
-                 annual_insurance_rate=0.0082,
+                 annual_prop_tax_rate=0.0124,
+                 annual_insurance_rate=0.00839,
                  monthly_hoa=0.00,
                  #monthly_hoa=133.33,
                  selling_price=195000.00,
